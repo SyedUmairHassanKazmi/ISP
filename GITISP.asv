@@ -80,18 +80,18 @@ for Aoo = 1:12
     end
 end 
 
-P_Jan = Pdcf(1:91 , 1:121) * 31;     Po(1)  = max(P_Jan(:)); [rp1 , cp1] = find(P_Jan == Po(1),  1, 'first');  Top(1) = rp1 - 11;   Aop(1) = cp1 - 61;                
-P_Feb = Pdcf(1:91 , 122:242) * 28;   Po(2)  = max(P_Feb(:)); [rp2 , cp2] = find(P_Feb == Po(2),  1, 'first');   Top(2) = rp2 - 11;  Aop(2) = cp2 - 61;
-P_Mar = Pdcf(1:91 , 243:363) * 31;   Po(3)  = max(P_Mar(:)); [rp3 , cp3] = find(P_Mar == Po(3),  1, 'first');  Top(3) = rp3 - 11;   Aop(3) = cp3 - 61;
-P_Apr = Pdcf(1:91 , 364:484) * 30;   Po(4)  = max(P_Apr(:)); [rp4 , cp4] = find(P_Apr == Po(4),  1, 'first');  Top(4) = rp4 - 11;   Aop(4) = cp4 - 61;
-P_May = Pdcf(1:91 , 485:605) * 31;   Po(5)  = max(P_May(:)); [rp5 , cp5] = find(P_May == Po(5),  1, 'first');  Top(5) = rp5 - 11;   Aop(5) = cp5 - 61;
-P_Jun = Pdcf(1:91 , 606:726) * 30;   Po(6)  = max(P_Jun(:)); [rp6 , cp6] = find(P_Jun == Po(6),  1, 'first');  Top(6) = rp6 - 11;   Aop(6) = cp6 - 61;
-P_Jul = Pdcf(1:91 , 727:847) * 31;   Po(7)  = max(P_Jul(:)); [rp7 , cp7] = find(P_Jul == Po(7),  1, 'first');  Top(7) = rp7 - 11;   Aop(7) = cp7 - 61;
-P_Aug = Pdcf(1:91 , 848:968) * 31;   Po(8)  = max(P_Aug(:)); [rp8 , cp8] = find(P_Aug == Po(8),  1, 'first');  Top(8) = rp8 - 11;   Aop(8) = cp8 - 61;
-P_Sep = Pdcf(1:91 , 969:1089) * 30;  Po(9)  = max(P_Sep(:)); [rp9 , cp9] = find(P_Sep == Po(9),  1, 'first');  Top(9) = rp9 - 11;   Aop(9) = cp9 - 61;
-P_Oct = Pdcf(1:91 , 1090:1210) * 31; Po(10) = max(P_Oct(:)); [rp10, cp10] = find(P_Oct == Po(10),1, 'first'); Top(10) = rp10 - 11;  Aop(10) = cp10 - 61;
-P_Nov = Pdcf(1:91 , 1211:1331) * 30; Po(11) = max(P_Nov(:)); [rp11, cp11] = find(P_Nov == Po(11),1, 'first'); Top(11) = rp11 - 11;  Aop(11) = cp11 - 61;
-P_Dec = Pdcf(1:91 , 1332:1452) * 31; Po(12) = max(P_Dec(:)); [rp12, cp12] = find(P_Dec == Po(12),1, 'first'); Top(12) = rp12 - 11;  Aop(12) = cp12 - 61;
+Janp = Pdcf(1:91 , 1:121) * 31;     Po(1)  = max(Janp(:)); [rp1 , cp1] = find(Janp == Po(1),  1, 'first');  Top(1) = rp1 - 11;   Aop(1) = cp1 - 61;                
+Febp = Pdcf(1:91 , 122:242) * 28;   Po(2)  = max(Febp(:)); [rp2 , cp2] = find(Febp == Po(2),  1, 'first');   Top(2) = rp2 - 11;  Aop(2) = cp2 - 61;
+Marp = Pdcf(1:91 , 243:363) * 31;   Po(3)  = max(Marp(:)); [rp3 , cp3] = find(Marp == Po(3),  1, 'first');  Top(3) = rp3 - 11;   Aop(3) = cp3 - 61;
+Aprp = Pdcf(1:91 , 364:484) * 30;   Po(4)  = max(Aprp(:)); [rp4 , cp4] = find(Aprp == Po(4),  1, 'first');  Top(4) = rp4 - 11;   Aop(4) = cp4 - 61;
+Mayp = Pdcf(1:91 , 485:605) * 31;   Po(5)  = max(Mayp(:)); [rp5 , cp5] = find(Mayp == Po(5),  1, 'first');  Top(5) = rp5 - 11;   Aop(5) = cp5 - 61;
+Junp = Pdcf(1:91 , 606:726) * 30;   Po(6)  = max(Junp(:)); [rp6 , cp6] = find(Junp == Po(6),  1, 'first');  Top(6) = rp6 - 11;   Aop(6) = cp6 - 61;
+Julp = Pdcf(1:91 , 727:847) * 31;   Po(7)  = max(Julp(:)); [rp7 , cp7] = find(Julp == Po(7),  1, 'first');  Top(7) = rp7 - 11;   Aop(7) = cp7 - 61;
+Augp = Pdcf(1:91 , 848:968) * 31;   Po(8)  = max(Augp(:)); [rp8 , cp8] = find(Augp == Po(8),  1, 'first');  Top(8) = rp8 - 11;   Aop(8) = cp8 - 61;
+Sepp = Pdcf(1:91 , 969:1089) * 30;  Po(9)  = max(Sepp(:)); [rp9 , cp9] = find(Sepp == Po(9),  1, 'first');  Top(9) = rp9 - 11;   Aop(9) = cp9 - 61;
+Octp = Pdcf(1:91 , 1090:1210) * 31; Po(10) = max(Octp(:)); [rp10, cp10] = find(Octp == Po(10),1, 'first'); Top(10) = rp10 - 11;  Aop(10) = cp10 - 61;
+Novp = Pdcf(1:91 , 1211:1331) * 30; Po(11) = max(Novp(:)); [rp11, cp11] = find(Novp == Po(11),1, 'first'); Top(11) = rp11 - 11;  Aop(11) = cp11 - 61;
+Decp = Pdcf(1:91 , 1332:1452) * 31; Po(12) = max(Decp(:)); [rp12, cp12] = find(Decp == Po(12),1, 'first'); Top(12) = rp12 - 11;  Aop(12) = cp12 - 61;
 
 for Aoop = 1:12
     if Aop(Aoop) == -60
@@ -100,8 +100,8 @@ for Aoop = 1:12
 end 
 
 
-Max_Decp = max(P_Dec(:));
-Perc_Decp = ((Max_Decp - P_Dec)/Max_Decp)*100;
+Max_Decp = max(Decp(:));
+Perc_Decp = ((Max_Decp - Decp)/Max_Decp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Decp(z,m) > 1
@@ -109,8 +109,8 @@ for z = 1:91
         end
     end
 end
-Max_Novp = max(P_Nov(:));
-Perc_Novp = ((Max_Novp - P_Nov)/Max_Novp)*100;
+Max_Novp = max(Novp(:));
+Perc_Novp = ((Max_Novp - Novp)/Max_Novp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Novp(z,m) > 1
@@ -118,8 +118,8 @@ for z = 1:91
         end
     end
 end
-Max_Octp = max(P_Oct(:));
-Perc_Octp = ((Max_Octp - P_Oct)/Max_Octp)*100;
+Max_Octp = max(Octp(:));
+Perc_Octp = ((Max_Octp - Octp)/Max_Octp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Octp(z,m) > 1
@@ -127,8 +127,8 @@ for z = 1:91
         end
     end
 end
-Max_Sepp = max(P_Sep(:));
-Perc_Sepp = ((Max_Sepp - P_Sep)/Max_Sepp)*100;
+Max_Sepp = max(Sepp(:));
+Perc_Sepp = ((Max_Sepp - Sepp)/Max_Sepp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Sepp(z,m) > 1
@@ -136,8 +136,8 @@ for z = 1:91
         end
     end
 end
-Max_Augp = max(P_Aug(:));
-Perc_Augp = ((Max_Augp - P_Aug)/Max_Augp)*100;
+Max_Augp = max(Augp(:));
+Perc_Augp = ((Max_Augp - Augp)/Max_Augp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Augp(z,m) > 1
@@ -145,8 +145,8 @@ for z = 1:91
         end
     end
 end
-Max_Julp = max(P_Jul(:));
-Perc_Julp = ((Max_Julp - P_Jul)/Max_Julp)*100;
+Max_Julp = max(Julp(:));
+Perc_Julp = ((Max_Julp - Julp)/Max_Julp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Julp(z,m) > 1
@@ -154,8 +154,8 @@ for z = 1:91
         end
     end
 end
-Max_Junp = max(P_Jun(:));
-Perc_Junp = ((Max_Junp - P_Jun)/Max_Junp)*100;
+Max_Junp = max(Junp(:));
+Perc_Junp = ((Max_Junp - Junp)/Max_Junp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Junp(z,m) > 1
@@ -163,8 +163,8 @@ for z = 1:91
         end
     end
 end
-Max_Mayp = max(P_May(:));
-Perc_Mayp = ((Max_Mayp - P_May)/Max_Mayp)*100;
+Max_Mayp = max(Mayp(:));
+Perc_Mayp = ((Max_Mayp - Mayp)/Max_Mayp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Mayp(z,m) > 1
@@ -172,8 +172,8 @@ for z = 1:91
         end
     end
 end
-Max_Aprp = max(P_Apr(:));
-Perc_Aprp = ((Max_Aprp - P_Apr)/Max_Aprp)*100;
+Max_Aprp = max(Aprp(:));
+Perc_Aprp = ((Max_Aprp - Aprp)/Max_Aprp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Aprp(z,m) > 1
@@ -181,8 +181,8 @@ for z = 1:91
         end
     end
 end
-Max_Marp = max(P_Mar(:));
-Perc_Marp = ((Max_Marp - P_Mar)/Max_Marp)*100;
+Max_Marp = max(Marp(:));
+Perc_Marp = ((Max_Marp - Marp)/Max_Marp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Marp(z,m) > 1
@@ -190,8 +190,8 @@ for z = 1:91
         end
     end
 end
-Max_Febp = max(P_Feb(:));
-Perc_Febp = ((Max_Febp - P_Feb)/Max_Febp)*100;
+Max_Febp = max(Febp(:));
+Perc_Febp = ((Max_Febp - Febp)/Max_Febp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Febp(z,m) > 1
@@ -199,8 +199,8 @@ for z = 1:91
         end
     end
 end
-Max_Janp = max(P_Jan(:));
-Perc_Janp = ((Max_Janp - P_Jan)/Max_Janp)*100;
+Max_Janp = max(Janp(:));
+Perc_Janp = ((Max_Janp - Janp)/Max_Janp)*100;
 for z = 1:91
     for m = 1:121
         if Perc_Janp(z,m) > 1
