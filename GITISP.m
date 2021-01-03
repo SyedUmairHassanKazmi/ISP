@@ -1,4 +1,5 @@
 Latitude = Data(1,1);
+Months = [1:12];
 NOCT = 45;
 Declanation_list = [-20.9, -13.0, -2.4, 9.4, 18.8, 23.1, 21.2, 13.5, 2.2, -9.6, -18.9, -23];
 Htiltf = [];
@@ -209,5 +210,43 @@ for z = 1:91
     end
 end
 
-Mean_Optimal = mean(To);
+Mean_Tilt = mean(To);
+Mean_Azimuth = mean(Ao);
 Tilt_Angles = To;
+MAX_ANNUAL_POWER = sum(Po);
+
+figure(1);
+f1 = contour(Beta,Alpha,P_Dec);
+xlabel('Tilt Angles (Degrees)')
+ylabel('Azimuth Angles (Degrees)')
+title('December Power Contour')
+hold on
+plot(To(12),Ao(12), 'xm');
+contour(Beta,Alpha,Perc_Decp ,'c')
+legend('Power (KW-hr / m^2 / Month)', 'Max Power', '< 1% Power Difference' , 'Location', 'North' );
+
+figure(2);
+f2 = contour(Beta,Alpha,P_Jun);
+xlabel('Tilt Angles (Degrees)')
+ylabel('Azimuth Angles (Degrees)')
+title('June Power Contour')
+hold on
+plot(To(6),Ao(6), 'xm');
+contour(Beta,Alpha,Perc_Junp ,'c')
+legend('Power (KW-hr / m^2 / Month)', 'Max Power', '< 1% Power Difference' , 'Location', 'North' );
+
+figure(3);
+f3 = plot(Months,Ao, 'r:x');
+legend( f3, 'Azimuth Angles vs. Months', 'Karachi','Fixed Optimal Azimuth', 'Location', 'North' );
+% Label axes
+xlabel('Months')
+ylabel('Azimuth Angles (Degrees)')
+xlim([1 12])
+title('Monthly Optimum Azimuth Angle')
+grid on
+hold on 
+plot(Months,Mean_Azimuth*ones(size(Months)), 'LineStyle','-' , 'DisplayName','Fixed Optimal Azimuth')
+
+disp(Mean_Tilt)
+disp(Mean_Azimuth)
+disp(MAX_ANNUAL_POWER)
