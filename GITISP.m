@@ -210,6 +210,68 @@ for z = 1:91
     end
 end
 
+[RT CA] = find(Perc_Decp,1);
+A_Min_Dec = CA - 61;
+[RT CA] = find(Perc_Decp,1, 'last');
+A_Max_Dec = CA - 61;
+
+[RT CA] = find(Perc_Novp,1);
+A_Min_Nov = CA - 61;
+[RT CA] = find(Perc_Novp,1, 'last');
+A_Max_Nov = CA - 61;
+
+[RT CA] = find(Perc_Octp,1);
+A_Min_Oct = CA - 61;
+[RT CA] = find(Perc_Octp,1, 'last');
+A_Max_Oct = CA - 61;
+
+[RT CA] = find(Perc_Sepp,1);
+A_Min_Sep = CA - 61;
+[RT CA] = find(Perc_Sepp,1, 'last');
+A_Max_Sep = CA - 61;
+
+[RT CA] = find(Perc_Augp,1);
+A_Min_Aug = CA - 61;
+[RT CA] = find(Perc_Augp,1, 'last');
+A_Max_Aug = CA - 61;
+
+[RT CA] = find(Perc_Julp,1);
+A_Min_Jul = CA - 61;
+[RT CA] = find(Perc_Julp,1, 'last');
+A_Max_Jul = CA - 61;
+
+[RT CA] = find(Perc_Junp,1);
+A_Min_Jun = CA - 61;
+[RT CA] = find(Perc_Junp,1, 'last');
+A_Max_Jun = CA - 61;
+
+[RT CA] = find(Perc_Mayp,1);
+A_Min_May = CA - 61;
+[RT CA] = find(Perc_Mayp,1, 'last');
+A_Max_May = CA - 61;
+
+[RT CA] = find(Perc_Aprp,1);
+A_Min_Apr = CA - 61;
+[RT CA] = find(Perc_Aprp,1, 'last');
+A_Max_Apr = CA - 61;
+
+[RT CA] = find(Perc_Marp,1);
+A_Min_Mar = CA - 61;
+[RT CA] = find(Perc_Marp,1, 'last');
+A_Max_Mar = CA - 61;
+
+[RT CA] = find(Perc_Febp,1);
+A_Min_Feb = CA - 61;
+[RT CA] = find(Perc_Febp,1, 'last');
+A_Max_Feb = CA - 61;
+
+[RT CA] = find(Perc_Janp,1);
+A_Min_Jan = CA - 61;
+[RT CA] = find(Perc_Janp,1, 'last');
+A_Max_Jan = CA - 61;
+
+
+
 Mean_Tilt = mean(To);
 Mean_Azimuth = mean(Ao);
 Tilt_Angles = To;
@@ -250,3 +312,5 @@ plot(Months,Mean_Azimuth*ones(size(Months)), 'LineStyle','-' , 'DisplayName','Fi
 disp(Mean_Tilt)
 disp(Mean_Azimuth)
 disp(MAX_ANNUAL_POWER)
+
+figure(4)
