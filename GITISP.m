@@ -1,6 +1,9 @@
 Latitude = Data(1,1);
+Longitude = Data(1,2);
 Months = [1:12];
 NOCT = 45;
+HgL = Data(2,[3:14]);
+TaL = Data(1,[3:14]);
 Declanation_list = [-20.9, -13.0, -2.4, 9.4, 18.8, 23.1, 21.2, 13.5, 2.2, -9.6, -18.9, -23];
 Htiltf = [];
 Tcellf = [];
@@ -210,71 +213,73 @@ for z = 1:91
     end
 end
 
-[RT CA] = find(Perc_Decp,1);
+[RT, CA] = find(Perc_Decp,1);
 A_Min_Dec = CA - 61;
-[RT CA] = find(Perc_Decp,1, 'last');
+[RT, CA] = find(Perc_Decp,1, 'last');
 A_Max_Dec = CA - 61;
 
-[RT CA] = find(Perc_Novp,1);
+[RT, CA] = find(Perc_Novp,1);
 A_Min_Nov = CA - 61;
-[RT CA] = find(Perc_Novp,1, 'last');
+[RT, CA] = find(Perc_Novp,1, 'last');
 A_Max_Nov = CA - 61;
 
-[RT CA] = find(Perc_Octp,1);
+[RT, CA] = find(Perc_Octp,1);
 A_Min_Oct = CA - 61;
-[RT CA] = find(Perc_Octp,1, 'last');
+[RT, CA] = find(Perc_Octp,1, 'last');
 A_Max_Oct = CA - 61;
 
-[RT CA] = find(Perc_Sepp,1);
+[RT, CA] = find(Perc_Sepp,1);
 A_Min_Sep = CA - 61;
-[RT CA] = find(Perc_Sepp,1, 'last');
+[RT, CA] = find(Perc_Sepp,1, 'last');
 A_Max_Sep = CA - 61;
 
-[RT CA] = find(Perc_Augp,1);
+[RT, CA] = find(Perc_Augp,1);
 A_Min_Aug = CA - 61;
-[RT CA] = find(Perc_Augp,1, 'last');
+[RT, CA] = find(Perc_Augp,1, 'last');
 A_Max_Aug = CA - 61;
 
-[RT CA] = find(Perc_Julp,1);
+[RT, CA] = find(Perc_Julp,1);
 A_Min_Jul = CA - 61;
-[RT CA] = find(Perc_Julp,1, 'last');
+[RT, CA] = find(Perc_Julp,1, 'last');
 A_Max_Jul = CA - 61;
 
-[RT CA] = find(Perc_Junp,1);
+[RT, CA] = find(Perc_Junp,1);
 A_Min_Jun = CA - 61;
-[RT CA] = find(Perc_Junp,1, 'last');
+[RT, CA] = find(Perc_Junp,1, 'last');
 A_Max_Jun = CA - 61;
 
-[RT CA] = find(Perc_Mayp,1);
+[RT, CA] = find(Perc_Mayp,1);
 A_Min_May = CA - 61;
-[RT CA] = find(Perc_Mayp,1, 'last');
+[RT, CA] = find(Perc_Mayp,1, 'last');
 A_Max_May = CA - 61;
 
-[RT CA] = find(Perc_Aprp,1);
+[RT, CA] = find(Perc_Aprp,1);
 A_Min_Apr = CA - 61;
-[RT CA] = find(Perc_Aprp,1, 'last');
+[RT, CA] = find(Perc_Aprp,1, 'last');
 A_Max_Apr = CA - 61;
 
-[RT CA] = find(Perc_Marp,1);
+[RT, CA] = find(Perc_Marp,1);
 A_Min_Mar = CA - 61;
-[RT CA] = find(Perc_Marp,1, 'last');
+[RT, CA] = find(Perc_Marp,1, 'last');
 A_Max_Mar = CA - 61;
 
-[RT CA] = find(Perc_Febp,1);
+[RT, CA] = find(Perc_Febp,1);
 A_Min_Feb = CA - 61;
-[RT CA] = find(Perc_Febp,1, 'last');
+[RT, CA] = find(Perc_Febp,1, 'last');
 A_Max_Feb = CA - 61;
 
-[RT CA] = find(Perc_Janp,1);
+[RT, CA] = find(Perc_Janp,1);
 A_Min_Jan = CA - 61;
-[RT CA] = find(Perc_Janp,1, 'last');
+[RT, CA] = find(Perc_Janp,1, 'last');
 A_Max_Jan = CA - 61;
 
-
+A_Min_Max = [A_Min_Jan , A_Min_Feb , A_Min_Mar , A_Min_Apr , A_Min_May , A_Min_Jun , A_Min_Jul , A_Min_Aug , A_Min_Sep , A_Min_Oct , A_Min_Nov , A_Min_Dec, A_Max_Jan , A_Max_Feb , A_Max_Mar , A_Max_Apr , A_Max_May , A_Max_Jun , A_Max_Jul , A_Max_Aug , A_Max_Sep , A_Max_Oct , A_Max_Nov , A_Max_Dec];
+Months2 = [1:12 , 1:12];
 
 Mean_Tilt = mean(To);
 Mean_Azimuth = mean(Ao);
 Tilt_Angles = To;
+Mean_Power = mean(Po);
 MAX_ANNUAL_POWER = sum(Po);
 
 figure(1);
@@ -299,7 +304,7 @@ legend('Power (KW-hr / m^2 / Month)', 'Max Power', '< 1% Power Difference' , 'Lo
 
 figure(3);
 f3 = plot(Months,Ao, 'r:x');
-legend( f3, 'Azimuth Angles vs. Months', 'Karachi','Fixed Optimal Azimuth', 'Location', 'North' );
+legend( f3, 'Azimuth Angles vs. Months', 'Location', 'North' );
 % Label axes
 xlabel('Months')
 ylabel('Azimuth Angles (Degrees)')
@@ -309,8 +314,21 @@ grid on
 hold on 
 plot(Months,Mean_Azimuth*ones(size(Months)), 'LineStyle','-' , 'DisplayName','Fixed Optimal Azimuth')
 
-disp(Mean_Tilt)
-disp(Mean_Azimuth)
-disp(MAX_ANNUAL_POWER)
+figure(4);
 
-figure(4)
+scatter(A_Min_Max , Months2 , '*r')
+ylabel('Months')
+xlabel('Azimuth Angles (Degrees)')
+title('Min Max Azimuth Angle Values for 1% Error')
+legend('Max and Min Azimuth', 'Location', 'best' );
+
+%Figure 5
+BarTemp(Months, TaL, HgL);
+
+%Figure 6
+Optimal_Tilt(Months, Tilt_Angles, Mean_Tilt);
+
+%Figure 7
+Optimal_Power(Months, Po, Mean_Power);
+
+Final_Data = [Latitude, Longitude, Mean_Tilt, Mean_Azimuth, Mean_Power, MAX_ANNUAL_POWER, A_Min_Jun , A_Max_Jun , A_Min_Dec , A_Max_Dec ];
