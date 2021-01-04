@@ -298,6 +298,7 @@ hold on
 plot(To(12),Ao(12), 'xm');
 contour(Beta,Alpha,Perc_Decp ,'c')
 legend('Power (KW-hr / m^2 / Month)', 'Max Power', '< 1% Power Difference' , 'Location', 'North' );
+saveas(gcf,'1_Dec_Power_Contour.png')
 
 figure(2);
 f2 = contour(Beta,Alpha,P_Jun);
@@ -308,6 +309,7 @@ hold on
 plot(To(6),Ao(6), 'xm');
 contour(Beta,Alpha,Perc_Junp ,'c')
 legend('Power (KW-hr / m^2 / Month)', 'Max Power', '< 1% Power Difference' , 'Location', 'North' );
+saveas(gcf,'2_Jun_Power_Contour.png')
 
 figure(3);
 f3 = plot(Months,Ao, 'r:x');
@@ -320,6 +322,7 @@ title('Monthly Optimum Azimuth Angle')
 grid on
 hold on 
 plot(Months,Mean_Azimuth*ones(size(Months)), 'LineStyle','-' , 'DisplayName','Fixed Optimal Azimuth')
+saveas(gcf,'3_Azimuth.png')
 
 figure(4);
 
@@ -328,14 +331,18 @@ ylabel('Months')
 xlabel('Azimuth Angles (Degrees)')
 title('Min Max Azimuth Angle Values for 1% Error')
 legend('Max and Min Azimuth', 'Location', 'best' );
+saveas(gcf,'4_Min_Max_Scatter.png')
 
 %Figure 5
 BarTemp(Months, TaL, HgL);
+saveas(gcf,'5_BarChart.png')
 
 %Figure 6
 Optimal_Tilt(Months, Tilt_Angles, Mean_Tilt);
+saveas(gcf,'6_Tilt.png')
 
 %Figure 7
 Optimal_Power(Months, Po, Mean_Power);
+saveas(gcf,'7_Power.png')
 
 Final_Data = [Latitude, Longitude, Mean_Tilt, Mean_Azimuth, Mean_Power, MAX_ANNUAL_POWER, A_Min_Jun , A_Max_Jun , A_Min_Dec , A_Max_Dec ];

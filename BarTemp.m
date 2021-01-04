@@ -28,7 +28,7 @@ opts.SmoothingParam = 0.999998144258912;
 % Plot fit with data.
 figure( 'Name', 'Ambient Temperature' );
 h = plot( fitresult, xData, yData ,'ko'  );
-legend( h, 'Ta vs. Months', 'Ambient Temperature' , 'Location', 'NorthEast' );
+legend( h, 'Ta vs. Months', 'Ambient Temperature' , 'Location', 'Best' );
 % Label axes
 xlabel Months
 ylabel('Temperature(°C)')
@@ -39,7 +39,7 @@ grid on
 hold on;
 yyaxis right
 h2 = bar(Months, HgL ,0.5 , 'DisplayName','Average GHI');
-title('Monthly average of Global Gorizontal Irradiance (GHI) and Ambient Temperature');
+title('Global Horizontal Irradiance(GHI) and Ambient Temperature');
 end
 
 

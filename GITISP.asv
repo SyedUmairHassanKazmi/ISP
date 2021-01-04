@@ -12,6 +12,8 @@ Tcellf = [];
 Pdcf = [];
 TLMIN = -10;
 TLMAX = 80;
+ALMIN = -60;
+ALMAX = 60;
 for Loop = 1:12
     Ta = Data(1,(Loop+2));
     Hg = Data(2,(Loop+2));
@@ -69,7 +71,7 @@ Tcellf(imag(Tcellf) ~= 0) = 0;
 Pdcf = [Pdcf Pdc];
 Pdcf(imag(Pdcf) ~= 0) = 0;
 end
-Z = (1+(-ALMIN)+ ALMAX)
+Z = (1+(-ALMIN)+ ALMAX);
 H_Jan = Htiltf(1:(1+(-TLMIN)+ TLMAX) , 1: Z);     HTo(1)  = max(H_Jan(:)); [r1 , c1] = find(H_Jan == HTo(1),  1, 'first');  To(1) = r1 - (1+(-TLMIN));   Ao(1) = c1 - (1+(-ALMIN));
 H_Feb = Htiltf(1:(1+(-TLMIN)+ TLMAX), (Z+1):2*Z);    HTo(2)  = max(H_Feb(:)); [r2 , c2] = find(H_Feb == HTo(2),  1, 'first');   To(2) = r2 - (1+(-TLMIN));   Ao(2) = c2 - (1+(-ALMIN));
 H_Mar = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (2*Z+1):3*Z);   HTo(3)  = max(H_Mar(:)); [r3 , c3] = find(H_Mar == HTo(3),  1, 'first');  To(3) = r3 - (1+(-TLMIN));   Ao(3) = c3 - (1+(-ALMIN));
@@ -112,7 +114,7 @@ end
 Max_Decp = max(P_Dec(:));
 Perc_Decp = ((Max_Decp - P_Dec)/Max_Decp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Decp(z,m) > 1
             Perc_Decp(z,m) = 0;
         end
@@ -121,7 +123,7 @@ end
 Max_Novp = max(P_Nov(:));
 Perc_Novp = ((Max_Novp - P_Nov)/Max_Novp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Novp(z,m) > 1
             Perc_Novp(z,m) = 0;
         end
@@ -130,7 +132,7 @@ end
 Max_Octp = max(P_Oct(:));
 Perc_Octp = ((Max_Octp - P_Oct)/Max_Octp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Octp(z,m) > 1
             Perc_Octp(z,m) = 0;
         end
@@ -139,7 +141,7 @@ end
 Max_Sepp = max(P_Sep(:));
 Perc_Sepp = ((Max_Sepp - P_Sep)/Max_Sepp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Sepp(z,m) > 1
             Perc_Sepp(z,m) = 0;
         end
@@ -148,7 +150,7 @@ end
 Max_Augp = max(P_Aug(:));
 Perc_Augp = ((Max_Augp - P_Aug)/Max_Augp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Augp(z,m) > 1
             Perc_Augp(z,m) = 0;
         end
@@ -157,7 +159,7 @@ end
 Max_Julp = max(P_Jul(:));
 Perc_Julp = ((Max_Julp - P_Jul)/Max_Julp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Julp(z,m) > 1
             Perc_Julp(z,m) = 0;
         end
@@ -166,7 +168,7 @@ end
 Max_Junp = max(P_Jun(:));
 Perc_Junp = ((Max_Junp - P_Jun)/Max_Junp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Junp(z,m) > 1
             Perc_Junp(z,m) = 0;
         end
@@ -175,7 +177,7 @@ end
 Max_Mayp = max(P_May(:));
 Perc_Mayp = ((Max_Mayp - P_May)/Max_Mayp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Mayp(z,m) > 1
             Perc_Mayp(z,m) = 0;
         end
@@ -184,7 +186,7 @@ end
 Max_Aprp = max(P_Apr(:));
 Perc_Aprp = ((Max_Aprp - P_Apr)/Max_Aprp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Aprp(z,m) > 1
             Perc_Aprp(z,m) = 0;
         end
@@ -193,7 +195,7 @@ end
 Max_Marp = max(P_Mar(:));
 Perc_Marp = ((Max_Marp - P_Mar)/Max_Marp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Marp(z,m) > 1
             Perc_Marp(z,m) = 0;
         end
@@ -202,7 +204,7 @@ end
 Max_Febp = max(P_Feb(:));
 Perc_Febp = ((Max_Febp - P_Feb)/Max_Febp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Febp(z,m) > 1
             Perc_Febp(z,m) = 0;
         end
@@ -211,7 +213,7 @@ end
 Max_Janp = max(P_Jan(:));
 Perc_Janp = ((Max_Janp - P_Jan)/Max_Janp)*100;
 for z = 1:(1+(-TLMIN)+ TLMAX)
-    for m = 1:121
+    for m = 1:Z
         if Perc_Janp(z,m) > 1
             Perc_Janp(z,m) = 0;
         end
@@ -329,7 +331,7 @@ legend('Max and Min Azimuth', 'Location', 'best' );
 
 %Figure 5
 BarTemp(Months, TaL, HgL);
-
+saveas(gc,'BarChartFile.png')
 %Figure 6
 Optimal_Tilt(Months, Tilt_Angles, Mean_Tilt);
 
