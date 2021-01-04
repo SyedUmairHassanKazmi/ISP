@@ -28,11 +28,11 @@ opts.SmoothingParam = 0.999998144258912;
 % Plot fit with data.
 figure( 'Name', 'Ambient Temperature' );
 h = plot( fitresult, xData, yData ,'ko'  );
-legend( h, 'Ta vs. Months', 'Ambient Temperature' ,'Global Horizontal Radiation' , 'Location', 'NorthEast' );
+legend( h, 'Ta vs. Months', 'Ambient Temperature' , 'Location', 'NorthEast' );
 % Label axes
 xlabel Months
 ylabel('Temperature(°C)')
-ylim([0 20])
+ylim([])
 yyaxis right
 ylabel('Global Horizontal Radiation (KW-hr / m^2 / Day)')
 grid on

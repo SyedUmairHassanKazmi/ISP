@@ -32,7 +32,7 @@ legend( h, 'Ta vs. Months', 'Ambient Temperature' , 'Location', 'NorthEast' );
 % Label axes
 xlabel Months
 ylabel('Temperature(°C)')
-ylim([0 20])
+ylim([0 35])
 yyaxis right
 ylabel('Global Horizontal Radiation (KW-hr / m^2 / Day)')
 grid on
