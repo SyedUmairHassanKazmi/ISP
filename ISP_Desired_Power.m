@@ -84,6 +84,10 @@ H_Sep = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (8*Z+1):9*Z);  HTo(9)  = max(H_Sep(:)); [
 H_Oct = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (9*Z+1):10*Z); HTo(10) = max(H_Oct(:)); [r10, c10] = find(H_Oct == HTo(10),1, 'first'); To(10) = r10 - (1+(-TLMIN)); Ao(10) = c10 - (1+(-ALMIN));
 H_Nov = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (10*Z+1):11*Z); HTo(11) = max(H_Nov(:)); [r11, c11] = find(H_Nov == HTo(11),1, 'first'); To(11) = r11 - (1+(-TLMIN)); Ao(11) = c11 - (1+(-ALMIN));
 H_Dec = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (11*Z+1):12*Z); HTo(12) = max(H_Dec(:)); [r12, c12] = find(H_Dec == HTo(12),1, 'first'); To(12) = r12 - (1+(-TLMIN)); Ao(12) = c12 - (1+(-ALMIN));
+H_Annual = H_Jan + H_Feb + H_Mar + H_Apr + H_May + H_Jun + H_Jul + H_Aug + H_Sep + H_Oct + H_Nov + H_Dec;
+HTF = max(H_Annual(:));
+[rHTF, cHTF] = find(H_Annual == HTF ,1, 'first'); TF = rHTF - (1+(-TLMIN)); AF = cHTF - (1+(-ALMIN));
+
 
 for Aoo = 1:12
     if Ao(Aoo) == -60
@@ -103,12 +107,26 @@ P_Sep = Pdcf(1:(1+(-TLMIN)+ TLMAX) , (8*Z+1):9*Z) * 30;  Po(9)  = max(P_Sep(:));
 P_Oct = Pdcf(1:(1+(-TLMIN)+ TLMAX) , (9*Z+1):10*Z) * 31; Po(10) = max(P_Oct(:)); [rp10, cp10] = find(P_Oct == Po(10),1, 'first'); Top(10) = rp10 - (1+(-TLMIN));  Aop(10) = cp10 - (1+(-ALMIN));
 P_Nov = Pdcf(1:(1+(-TLMIN)+ TLMAX) , (10*Z+1):11*Z) * 30; Po(11) = max(P_Nov(:)); [rp11, cp11] = find(P_Nov == Po(11),1, 'first'); Top(11) = rp11 - (1+(-TLMIN));  Aop(11) = cp11 - (1+(-ALMIN));
 P_Dec = Pdcf(1:(1+(-TLMIN)+ TLMAX) , (11*Z+1):12*Z) * 31; Po(12) = max(P_Dec(:)); [rp12, cp12] = find(P_Dec == Po(12),1, 'first'); Top(12) = rp12 - (1+(-TLMIN));  Aop(12) = cp12 - (1+(-ALMIN));
+P_Annual = P_Jan + P_Feb + P_Mar + P_Apr + P_May + P_Jun + P_Jul + P_Aug + P_Sep + P_Oct + P_Nov + P_Dec;
+PF = max(P_Annual(:));
+[rPF, cPF] = find(P_Annual == PF ,1, 'first'); TFP = rPF - (1+(-TLMIN)); AFP = cPF - (1+(-ALMIN));
+
 
 for Aoop = 1:12
     if Aop(Aoop) == -60
         Aop(Aoop) = 0;
     end
-end 
+end
+
+Max_Annualp = max(P_Annual(:));
+Perc_Annualp = ((Max_Annualp - P_Annual)/Max_Annualp)*100;
+for z = 1:(1+(-TLMIN)+ TLMAX)
+    for m = 1:Z
+        if Perc_Annualp(z,m) > 1
+            Perc_Annualp(z,m) = 0;
+        end
+    end
+end
 
 
 Max_Decp = max(P_Dec(:));
@@ -220,6 +238,11 @@ for z = 1:(1+(-TLMIN)+ TLMAX)
     end
 end
 
+[RT, CA] = find(Perc_Annualp,1);
+A_Min_Annual = CA - (1+(-ALMIN));
+[RT, CA] = find(Perc_Annualp,1, 'last');
+A_Max_Annual = CA - (1+(-ALMIN));
+
 [RT, CA] = find(Perc_Decp,1);
 A_Min_Dec = CA - (1+(-ALMIN));
 [RT, CA] = find(Perc_Decp,1, 'last');
@@ -283,59 +306,30 @@ A_Max_Jan = CA - (1+(-ALMIN));
 A_Min_Max = [A_Min_Jan , A_Min_Feb , A_Min_Mar , A_Min_Apr , A_Min_May , A_Min_Jun , A_Min_Jul , A_Min_Aug , A_Min_Sep , A_Min_Oct , A_Min_Nov , A_Min_Dec, A_Max_Jan , A_Max_Feb , A_Max_Mar , A_Max_Apr , A_Max_May , A_Max_Jun , A_Max_Jul , A_Max_Aug , A_Max_Sep , A_Max_Oct , A_Max_Nov , A_Max_Dec];
 Months2 = [1:12 , 1:12];
 
-Mean_Tilt = mean(To);
-Mean_Azimuth = mean(Ao);
+Optimal_Tilt = TFP;
+Optimal_Azimuth = AFP;
 Tilt_Angles = To;
-Mean_Power = mean(Po);
-MAX_ANNUAL_POWER = sum(Po);
+Avg_Max_Fixed_Power = PF/12;
+Avg_Max_Monthly_Power = sum(Po)/12;
+Max_Fixed_Power = PF;
+Max_Monthly_Power = sum(Po);
+Desired_Tilt = input('Enter you desired Tilt Angle: ');
+Desired_Azimuth = input('Enter you desired Azimuth Angle: ');
 
-figure(1);
-f1 = contour(Beta,Alpha,P_Dec);
-xlabel('Tilt Angles (Degrees)')
-ylabel('Azimuth Angles (Degrees)')
-title('December Power Contour')
-hold on
-plot(To(12),Ao(12), 'xm');
-contour(Beta,Alpha,Perc_Decp ,'c')
-legend('Power (KW-hr / m^2 / Month)', 'Max Power', '< 1% Power Difference' , 'Location', 'North' );
+Y1 = Desired_Tilt + (1+(-TLMIN));
+Y2 = Desired_Azimuth + (1+(-ALMIN));
+Desired_Power = P_Jan(Y1,Y2) + P_Feb(Y1,Y2) + P_Mar(Y1,Y2) + P_Apr(Y1,Y2) + P_May(Y1,Y2) + P_Jun(Y1,Y2) + P_Jul(Y1,Y2) + P_Aug(Y1,Y2) + P_Sep(Y1,Y2) + P_Oct(Y1,Y2) + P_Nov(Y1,Y2) + P_Dec(Y1,Y2);
+Avg_Desired_Power = Desired_Power/12;
 
-figure(2);
-f2 = contour(Beta,Alpha,P_Jun);
-xlabel('Tilt Angles (Degrees)')
-ylabel('Azimuth Angles (Degrees)')
-title('June Power Contour')
-hold on
-plot(To(6),Ao(6), 'xm');
-contour(Beta,Alpha,Perc_Junp ,'c')
-legend('Power (KW-hr / m^2 / Month)', 'Max Power', '< 1% Power Difference' , 'Location', 'North' );
-
-figure(3);
-f3 = plot(Months,Ao, 'r:x');
-legend( f3, 'Azimuth Angles vs. Months', 'Location', 'North' );
-% Label axes
-xlabel('Months')
-ylabel('Azimuth Angles (Degrees)')
-xlim([1 12])
-title('Monthly Optimum Azimuth Angle')
-grid on
-hold on 
-plot(Months,Mean_Azimuth*ones(size(Months)), 'LineStyle','-' , 'DisplayName','Fixed Optimal Azimuth')
-
-figure(4);
-
-scatter(A_Min_Max , Months2 , '*r')
-ylabel('Months')
-xlabel('Azimuth Angles (Degrees)')
-title('Min Max Azimuth Angle Values for 1% Error')
-legend('Max and Min Azimuth', 'Location', 'best' );
-
-%Figure 5
-BarTemp(Months, TaL, HgL);
-saveas(gc,'BarChartFile.png')
-%Figure 6
-Optimal_Tilt(Months, Tilt_Angles, Mean_Tilt);
 
 %Figure 7
-Optimal_Power(Months, Po, Mean_Power);
+Desired_Power_script(Months, Po, Avg_Max_Fixed_Power, Avg_Max_Monthly_Power, Avg_Desired_Power);
+saveas(gcf,'9_Desired_Power.png')
 
-Final_Data = [Latitude, Longitude, Mean_Tilt, Mean_Azimuth, Mean_Power, MAX_ANNUAL_POWER, A_Min_Jun , A_Max_Jun , A_Min_Dec , A_Max_Dec ];
+fprintf('The Monthly Maximum Power is %4.2f KW-hr/m^2/Year  \n', Max_Monthly_Power);
+fprintf('The Fixed Power is %4.2f KW-hr/m^2/Year \n', Max_Fixed_Power);
+fprintf('The Desired Power at Tilt %4.2f°  and Azimuth %4.2f° is %4.2f KW-hr/m^2/Year \n',Desired_Tilt,Desired_Azimuth, Desired_Power);
+
+
+
+Z_Final_Data = [Latitude, Longitude, Optimal_Tilt, Optimal_Azimuth, Desired_Tilt, Desired_Azimuth, Max_Monthly_Power, Max_Fixed_Power, Desired_Power];

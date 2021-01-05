@@ -1,4 +1,4 @@
-function [fitresult, gof] = createFit1(Months, Tilt_Angles, Mean_Tilt)
+function [fitresult, gof] = createFit1(Months, Tilt_Angles, Optimal_Tilt)
 %CREATEFIT1(MONTHS,TILT_ANGLES)
 %  Create a fit.
 %
@@ -33,8 +33,8 @@ legend( h, 'Tilt Angles vs. Months', 'Optimum Tilt Angles', 'Location', 'North' 
 xlabel('Months')
 ylabel('Tilt Angles (Degrees)')
 xlim([1 12])
-title('Monthly Optimum Tilt Angle')
+title('Monthly Optimal Tilt Angle')
 grid on
 hold on 
-plot(Months,Mean_Tilt*ones(size(Months)), 'LineStyle','--' , 'DisplayName','Fixed Optimal Tilt')
+plot(Months,Optimal_Tilt*ones(size(Months)), 'LineStyle','--' , 'DisplayName','Fixed Optimal Tilt')
 end

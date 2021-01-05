@@ -1,4 +1,4 @@
-function [fitresult, gof] = createFit1(Months, Po, Avg_Max_Fixed_Power, Avg_Max_Monthly_Power)
+function [fitresult, gof] = createFit1(Months, Po, Avg_Max_Fixed_Power, Avg_Max_Monthly_Power, Avg_Desired_Power)
 %CREATEFIT1(MONTHS,PO)
 %  Create a fit.
 %
@@ -37,8 +37,9 @@ xlim([1 12])
 title('Monthly Optimum Power Yield')
 grid on
 hold on 
-plot(Months,Avg_Max_Monthly_Power*ones(size(Months)), 'LineStyle','--' , 'DisplayName','Average Monthly Power')
-plot(Months,Avg_Max_Fixed_Power*ones(size(Months)), 'LineStyle','-.' , 'DisplayName','Fixed Optimal Power')
+plot(Months,Avg_Max_Monthly_Power*ones(size(Months)), 'LineStyle','--' , 'DisplayName','Average Monthly Power', 'LineWidth' , 1.5)
+plot(Months,Avg_Max_Fixed_Power*ones(size(Months)), 'LineStyle','-.' , 'DisplayName','Fixed Optimal Power','LineWidth' , 1.5)
+plot(Months,Avg_Desired_Power*ones(size(Months)), 'LineStyle',':' , 'DisplayName','Fixed Desired Power', 'LineWidth' , 1.5)
 
 end
 
