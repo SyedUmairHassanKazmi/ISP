@@ -27,17 +27,19 @@ opts.SmoothingParam = 0.999998144258912;
 
 % Plot fit with data.
 figure( 'Name', 'Ambient Temperature' );
+yyaxis right
 h = plot( fitresult, xData, yData ,'ko'  );
-legend( h, 'Ta vs. Months', 'Ambient Temperature' , 'Location', 'Best' );
+legend( h, 'Ta vs. Months', 'Ambient Temperature' , 'Location', 'Best' , [237 191 160 160] );
 % Label axes
+yyaxis right
 xlabel Months
 ylabel('Temperature(°C)')
 ylim([0 35])
-yyaxis right
+yyaxis left
 ylabel('Global Horizontal Radiation (KW-hr / m^2 / Day)')
 grid on
 hold on;
-yyaxis right
+yyaxis left
 h2 = bar(Months, HgL ,0.5 , 'DisplayName','Average GHI');
 title('Global Horizontal Irradiance(GHI) and Ambient Temperature');
 end

@@ -373,7 +373,7 @@ scatter(A_Min_Max , Months2 , '*r')
 ylabel('Months')
 xlabel('Azimuth Angles (Degrees)')
 title('Min Max Azimuth Angle Values for 1% Error')
-legend('Max and Min Azimuth', 'Location', 'best' );
+legend('Max and Min Azimuth', 'Location', 'best', [237 200 160 160] );
 saveas(gcf,'5_Min_Max_Scatter.png')
 
 %Figure 6

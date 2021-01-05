@@ -313,8 +313,8 @@ Avg_Max_Fixed_Power = PF/12;
 Avg_Max_Monthly_Power = sum(Po)/12;
 Max_Fixed_Power = PF;
 Max_Monthly_Power = sum(Po);
-Desired_Tilt = input('Enter you desired Tilt Angle: ');
-Desired_Azimuth = input('Enter you desired Azimuth Angle: ');
+Desired_Tilt = input(sprintf('Enter Your Desired Tilt Angle Between %4.2f And %4.2f: ', TLMIN , TLMAX));
+Desired_Azimuth = input(sprintf('Enter Your Desired Azimuth Angle Between %4.2f And %4.2f: ', ALMIN , ALMAX));
 
 Y1 = Desired_Tilt + (1+(-TLMIN));
 Y2 = Desired_Azimuth + (1+(-ALMIN));
@@ -322,7 +322,7 @@ Desired_Power = P_Jan(Y1,Y2) + P_Feb(Y1,Y2) + P_Mar(Y1,Y2) + P_Apr(Y1,Y2) + P_Ma
 Avg_Desired_Power = Desired_Power/12;
 
 
-%Figure 7
+%Figure 9
 Desired_Power_script(Months, Po, Avg_Max_Fixed_Power, Avg_Max_Monthly_Power, Avg_Desired_Power);
 saveas(gcf,'9_Desired_Power.png')
 
