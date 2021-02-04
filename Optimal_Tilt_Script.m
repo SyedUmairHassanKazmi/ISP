@@ -28,6 +28,7 @@ opts.SmoothingParam = 0.99999999999999;
 % Plot fit with data.
 figure( 'Name', 'Karachi' );
 h = plot( fitresult, xData, yData );
+h(1).MarkerSize = 15;
 legend( h, 'Tilt Angles vs. Months', 'Optimum Tilt Angles', 'Location', 'North' );
 % Label axes
 xlabel('Months')

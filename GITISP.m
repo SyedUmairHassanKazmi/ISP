@@ -6,14 +6,15 @@ Months = [1:12];
 NOCT = 45;
 HgL = Data(2,[3:14]);
 TaL = Data(1,[3:14]);
+HdL = Data(3,[3:14]);
 Declanation_list = [-20.9, -13.0, -2.4, 9.4, 18.8, 23.1, 21.2, 13.5, 2.2, -9.6, -18.9, -23];
 Htiltf = [];
 Tcellf = [];
 Pdcf = [];
-TLMIN = -10;
-TLMAX = 80;
-ALMIN = -60;
-ALMAX = 60;
+TLMIN = -20;
+TLMAX = 90;
+ALMIN = -80;
+ALMAX = 90;
 for Loop = 1:12
     Ta = Data(1,(Loop+2));
     Hg = Data(2,(Loop+2));
@@ -72,25 +73,25 @@ Pdcf = [Pdcf Pdc];
 Pdcf(imag(Pdcf) ~= 0) = 0;
 end
 Z = (1+(-ALMIN)+ ALMAX);
-H_Jan = Htiltf(1:(1+(-TLMIN)+ TLMAX) , 1: Z);     HTo(1)  = max(H_Jan(:)); [r1 , c1] = find(H_Jan == HTo(1),  1, 'first');  To(1) = r1 - (1+(-TLMIN));   Ao(1) = c1 - (1+(-ALMIN));
-H_Feb = Htiltf(1:(1+(-TLMIN)+ TLMAX), (Z+1):2*Z);    HTo(2)  = max(H_Feb(:)); [r2 , c2] = find(H_Feb == HTo(2),  1, 'first');   To(2) = r2 - (1+(-TLMIN));   Ao(2) = c2 - (1+(-ALMIN));
-H_Mar = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (2*Z+1):3*Z);   HTo(3)  = max(H_Mar(:)); [r3 , c3] = find(H_Mar == HTo(3),  1, 'first');  To(3) = r3 - (1+(-TLMIN));   Ao(3) = c3 - (1+(-ALMIN));
-H_Apr = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (3*Z+1):4*Z);   HTo(4)  = max(H_Apr(:)); [r4 , c4] = find(H_Apr == HTo(4),  1, 'first');  To(4) = r4 - (1+(-TLMIN));   Ao(4) = c4 - (1+(-ALMIN));
-H_May = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (4*Z+1):5*Z);   HTo(5)  = max(H_May(:)); [r5 , c5] = find(H_May == HTo(5),  1, 'first');  To(5) = r5 - (1+(-TLMIN));   Ao(5) = c5 - (1+(-ALMIN));
-H_Jun = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (5*Z+1):6*Z);   HTo(6)  = max(H_Jun(:)); [r6 , c6] = find(H_Jun == HTo(6),  1, 'first');  To(6) = r6 - (1+(-TLMIN));   Ao(6) = c6 - (1+(-ALMIN));
-H_Jul = Htiltf(1:(1+(-TLMIN)+ TLMAX), (6*Z+1):7*Z);   HTo(7)  = max(H_Jul(:)); [r7 , c7] = find(H_Jul == HTo(7),  1, 'first');  To(7) = r7 - (1+(-TLMIN));   Ao(7) = c7 - (1+(-ALMIN));
-H_Aug = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (7*Z+1):8*Z);   HTo(8)  = max(H_Aug(:)); [r8 , c8] = find(H_Aug == HTo(8),  1, 'first');  To(8) = r8 - (1+(-TLMIN));   Ao(8) = c8 - (1+(-ALMIN));
-H_Sep = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (8*Z+1):9*Z);  HTo(9)  = max(H_Sep(:)); [r9 , c9] = find(H_Sep == HTo(9),  1, 'first');  To(9) = r9 - (1+(-TLMIN));   Ao(9) = c9 - (1+(-ALMIN));
-H_Oct = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (9*Z+1):10*Z); HTo(10) = max(H_Oct(:)); [r10, c10] = find(H_Oct == HTo(10),1, 'first'); To(10) = r10 - (1+(-TLMIN)); Ao(10) = c10 - (1+(-ALMIN));
-H_Nov = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (10*Z+1):11*Z); HTo(11) = max(H_Nov(:)); [r11, c11] = find(H_Nov == HTo(11),1, 'first'); To(11) = r11 - (1+(-TLMIN)); Ao(11) = c11 - (1+(-ALMIN));
-H_Dec = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (11*Z+1):12*Z); HTo(12) = max(H_Dec(:)); [r12, c12] = find(H_Dec == HTo(12),1, 'first'); To(12) = r12 - (1+(-TLMIN)); Ao(12) = c12 - (1+(-ALMIN));
+H_Jan = Htiltf(1:(1+(-TLMIN)+ TLMAX) , 1: Z)*31;     HTo(1)  = max(H_Jan(:)); [r1 , c1] = find(H_Jan == HTo(1),  1, 'first');  To(1) = r1 - (1+(-TLMIN));   Ao(1) = c1 - (1+(-ALMIN));
+H_Feb = Htiltf(1:(1+(-TLMIN)+ TLMAX), (Z+1):2*Z)*28;    HTo(2)  = max(H_Feb(:)); [r2 , c2] = find(H_Feb == HTo(2),  1, 'first');   To(2) = r2 - (1+(-TLMIN));   Ao(2) = c2 - (1+(-ALMIN));
+H_Mar = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (2*Z+1):3*Z)*31;   HTo(3)  = max(H_Mar(:)); [r3 , c3] = find(H_Mar == HTo(3),  1, 'first');  To(3) = r3 - (1+(-TLMIN));   Ao(3) = c3 - (1+(-ALMIN));
+H_Apr = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (3*Z+1):4*Z)*30;   HTo(4)  = max(H_Apr(:)); [r4 , c4] = find(H_Apr == HTo(4),  1, 'first');  To(4) = r4 - (1+(-TLMIN));   Ao(4) = c4 - (1+(-ALMIN));
+H_May = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (4*Z+1):5*Z)*31;   HTo(5)  = max(H_May(:)); [r5 , c5] = find(H_May == HTo(5),  1, 'first');  To(5) = r5 - (1+(-TLMIN));   Ao(5) = c5 - (1+(-ALMIN));
+H_Jun = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (5*Z+1):6*Z)*30;   HTo(6)  = max(H_Jun(:)); [r6 , c6] = find(H_Jun == HTo(6),  1, 'first');  To(6) = r6 - (1+(-TLMIN));   Ao(6) = c6 - (1+(-ALMIN));
+H_Jul = Htiltf(1:(1+(-TLMIN)+ TLMAX), (6*Z+1):7*Z)*31;   HTo(7)  = max(H_Jul(:)); [r7 , c7] = find(H_Jul == HTo(7),  1, 'first');  To(7) = r7 - (1+(-TLMIN));   Ao(7) = c7 - (1+(-ALMIN));
+H_Aug = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (7*Z+1):8*Z)*31;   HTo(8)  = max(H_Aug(:)); [r8 , c8] = find(H_Aug == HTo(8),  1, 'first');  To(8) = r8 - (1+(-TLMIN));   Ao(8) = c8 - (1+(-ALMIN));
+H_Sep = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (8*Z+1):9*Z)*30;  HTo(9)  = max(H_Sep(:)); [r9 , c9] = find(H_Sep == HTo(9),  1, 'first');  To(9) = r9 - (1+(-TLMIN));   Ao(9) = c9 - (1+(-ALMIN));
+H_Oct = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (9*Z+1):10*Z)*31; HTo(10) = max(H_Oct(:)); [r10, c10] = find(H_Oct == HTo(10),1, 'first'); To(10) = r10 - (1+(-TLMIN)); Ao(10) = c10 - (1+(-ALMIN));
+H_Nov = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (10*Z+1):11*Z)*30; HTo(11) = max(H_Nov(:)); [r11, c11] = find(H_Nov == HTo(11),1, 'first'); To(11) = r11 - (1+(-TLMIN)); Ao(11) = c11 - (1+(-ALMIN));
+H_Dec = Htiltf(1:(1+(-TLMIN)+ TLMAX) , (11*Z+1):12*Z)*31; HTo(12) = max(H_Dec(:)); [r12, c12] = find(H_Dec == HTo(12),1, 'first'); To(12) = r12 - (1+(-TLMIN)); Ao(12) = c12 - (1+(-ALMIN));
 H_Annual = H_Jan + H_Feb + H_Mar + H_Apr + H_May + H_Jun + H_Jul + H_Aug + H_Sep + H_Oct + H_Nov + H_Dec;
 HTF = max(H_Annual(:));
 [rHTF, cHTF] = find(H_Annual == HTF ,1, 'first'); TF = rHTF - (1+(-TLMIN)); AF = cHTF - (1+(-ALMIN));
 
 
 for Aoo = 1:12
-    if Ao(Aoo) == -60
+    if Ao(Aoo) == ALMIN
         Ao(Aoo) = 0;
     end
 end 
@@ -113,7 +114,7 @@ PF = max(P_Annual(:));
 
 
 for Aoop = 1:12
-    if Aop(Aoop) == -60
+    if Aop(Aoop) == ALMIN
         Aop(Aoop) = 0;
     end
 end
@@ -308,11 +309,16 @@ Months2 = [1:12 , 1:12];
 
 Optimal_Tilt = TFP;
 Optimal_Azimuth = AFP;
-Tilt_Angles = To;
+Tilt_Angles = Top;
 Avg_Max_Fixed_Power = PF/12;
 Avg_Max_Monthly_Power = sum(Po)/12;
 Max_Fixed_Power = PF;
 Max_Monthly_Power = sum(Po);
+Max_Fixed_H = HTF;
+Max_Monthly_H = sum(HTo);
+
+fpath = sprintf("C:\\Users\\DELL\\Desktop\\ISP\\ISP\\Pictures\\%4.2f_%4.2f",Latitude,Longitude);
+mkdir(fpath)
 
 figure(1);
 [f1, c] = contour(Beta,Alpha,P_Dec, 'ShowText','on');
@@ -320,12 +326,14 @@ c.LineWidth = 2;
 colormap(parula(10));
 xlabel('Tilt Angles (Degrees)')
 ylabel('Azimuth Angles (Degrees)')
-title('December Power Contour')
+title('December Energy Contour')
 hold on
-plot(To(12),Ao(12), 'xm');
+plot(To(12),Ao(12), 'xm', 'MarkerSize' , 7);
 contour(Beta,Alpha,Perc_Decp ,'c', 'LineStyle','--')
-legend('Power (KW-hr / m^2 / Month)', 'Max Power', '< 1% Power Difference' , 'Location', 'North' );
-saveas(gcf,'1_Dec_Power_Contour.png')
+legend('Energy (KW-hr / m^2 / Month)', 'Max Energy', '< 1% Energy Difference' , 'Location', 'North' );
+
+saveas(gca, fullfile(fpath, '1_Dec_Energy_Contour.png'));
+
 
 figure(2);
 [f2, c] = contour(Beta,Alpha,P_Jun, 'ShowText','on');
@@ -333,12 +341,12 @@ c.LineWidth = 2;
 colormap(parula(10));
 xlabel('Tilt Angles (Degrees)')
 ylabel('Azimuth Angles (Degrees)')
-title('June Power Contour')
+title('June Energy Contour')
 hold on
-plot(To(6),Ao(6), 'xm');
+plot(To(6),Ao(6), 'xm', 'MarkerSize' , 7);
 contour(Beta,Alpha,Perc_Junp ,'c', 'LineStyle','--')
-legend('Power (KW-hr / m^2 / Month)', 'Max Power', '< 1% Power Difference' , 'Location', 'North' );
-saveas(gcf,'2_Jun_Power_Contour.png')
+legend('Energy (KW-hr / m^2 / Month)', 'Max Energy', '< 1% Energy Difference' , 'Location', 'North' );
+saveas(gcf,fullfile(fpath,'2_Jun_Energy_Contour.png'));
 
 
 figure(3);
@@ -347,12 +355,12 @@ c.LineWidth = 2;
 colormap(parula(10))
 xlabel('Tilt Angles (Degrees)')
 ylabel('Azimuth Angles (Degrees)')
-title('Fixed Annual Power Contour')
+title('Fixed Annual Energy Contour')
 hold on
-plot(TFP , AFP , 'xm');
+plot(TFP , AFP , 'xm', 'MarkerSize' , 7);
 contour(Beta,Alpha,Perc_Annualp , 'c', 'LineStyle','--' )
-legend('Power (KW-hr / m^2 / Month)', 'Max Power', '< 1% Power Difference' , 'Location', 'North' );
-saveas(gcf,'3_Fixed_Annual_Power_Contour.png')
+legend('Energy (KW-hr / m^2 / Energy)', 'Max Energy', '< 1% Energy Difference' , 'Location', 'North' );
+saveas(gcf,fullfile(fpath,'3_Fixed_Annual_Energy_Contour.png'));
 
 figure(4);
 f4 = plot(Months,Ao, 'r:x');
@@ -365,7 +373,7 @@ title('Monthly Optimal Azimuth Angle')
 grid on
 hold on 
 plot(Months,Optimal_Azimuth*ones(size(Months)), 'LineStyle','-' , 'DisplayName','Fixed Optimal Azimuth')
-saveas(gcf,'4_Azimuth.png')
+saveas(gcf,fullfile(fpath,'4_Azimuth.png'));
 
 figure(5);
 
@@ -373,19 +381,36 @@ scatter(A_Min_Max , Months2 , '*r')
 ylabel('Months')
 xlabel('Azimuth Angles (Degrees)')
 title('Min Max Azimuth Angle Values for 1% Error')
+xlim([-90 90])
+ylim([1 12])
+hold on;
+plot([A_Min_Jan A_Max_Jan], [1 1], 'k');
+plot([A_Min_Feb A_Max_Feb], [2 2], 'k');
+plot([A_Min_Mar A_Max_Mar], [3 3], 'k');
+plot([A_Min_Apr A_Max_Apr], [4 4], 'k');
+plot([A_Min_May A_Max_May], [5 5], 'k');
+plot([A_Min_Jun A_Max_Jun], [6 6], 'k');
+plot([A_Min_Jul A_Max_Jul], [7 7], 'k');
+plot([A_Min_Aug A_Max_Aug], [8 8], 'k');
+plot([A_Min_Sep A_Max_Sep], [9 9], 'k');
+plot([A_Min_Oct A_Max_Oct], [10 10], 'k');
+plot([A_Min_Nov A_Max_Nov], [11 11], 'k');
+plot([A_Min_Dec A_Max_Dec], [12 12], 'k');
 legend('Max and Min Azimuth', 'Location', 'best', [237 200 160 160] );
-saveas(gcf,'5_Min_Max_Scatter.png')
+saveas(gcf,fullfile(fpath,'5_Min_Max_Scatter.png'));
 
 %Figure 6
 BarTemp(Months, TaL, HgL);
-saveas(gcf,'6_BarChart.png')
+saveas(gcf,fullfile(fpath,'6_BarChart.png'));
 
 %Figure 7
 Optimal_Tilt_Script(Months, Tilt_Angles, Optimal_Tilt);
-saveas(gcf,'7_Tilt.png')
+saveas(gcf,fullfile(fpath,'7_Tilt.png'));
 
 %Figure 8
 Optimal_Power(Months, Po, Avg_Max_Fixed_Power, Avg_Max_Monthly_Power);
-saveas(gcf,'8_Power.png')
+saveas(gcf,fullfile(fpath,'8_Power.png'));
 
-A_Final_Data = [Latitude, Longitude, Optimal_Tilt, Optimal_Azimuth, Max_Fixed_Power, Max_Monthly_Power, A_Min_Jun , A_Max_Jun , A_Min_Dec , A_Max_Dec , A_Min_Annual , A_Max_Annual];
+A_Tilt_Angles = [Latitude, Longitude, Tilt_Angles];
+A_Final_Data = [Latitude, Longitude, Optimal_Tilt, Optimal_Azimuth, Max_Fixed_H , Max_Fixed_Power , Max_Monthly_H , Max_Monthly_Power];
+A_Final_MM = [Latitude, Longitude, A_Min_Annual , A_Max_Annual , A_Min_Jan , A_Max_Jan, A_Min_Feb , A_Max_Feb , A_Min_Mar , A_Max_Mar ,  A_Min_Apr ,  A_Max_Apr , A_Min_May , A_Max_May , A_Min_Jun , A_Max_Jun , A_Min_Jul ,  A_Max_Jul ,A_Min_Aug , A_Max_Aug ,A_Min_Sep , A_Max_Sep , A_Min_Oct , A_Max_Oct , A_Min_Nov , A_Max_Nov , A_Min_Dec , A_Max_Dec];

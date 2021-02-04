@@ -26,19 +26,20 @@ opts.SmoothingParam = 0.999996940403878;
 [fitresult, gof] = fit( xData, yData, ft, opts );
 
 % Plot fit with data.
-figure( 'Name', 'Optimum Power' );
-h = plot( fitresult, xData, yData );
-legend( h, 'Power vs. Months', 'Optimum Monthly Power', 'Location', 'NorthEast' );
+figure( 'Name', 'Optimal Energy' );
+h = plot( fitresult, xData, yData);
+h(1).MarkerSize = 15;
+legend( h, 'Energy vs. Months', 'Optimal Monthly Energy', 'Location', 'NorthEast' );
 
 % Label axes
 xlabel Months
-ylabel('Monthly Power Yield (KW-hr / m^2 / Month)')
+ylabel('Monthly Energy Yield (KW-hr / m^2 / Month)')
 xlim([1 12])
-title('Monthly Optimum Power Yield')
+title('Monthly Optimal Energy Yield')
 grid on
 hold on 
-plot(Months,Avg_Max_Monthly_Power*ones(size(Months)), 'LineStyle','--' , 'DisplayName','Average Monthly Power')
-plot(Months,Avg_Max_Fixed_Power*ones(size(Months)), 'LineStyle','-.' , 'DisplayName','Fixed Optimal Power')
+plot(Months,Avg_Max_Monthly_Power*ones(size(Months)), 'LineStyle','--' , 'DisplayName','Average Monthly Energy')
+plot(Months,Avg_Max_Fixed_Power*ones(size(Months)), 'LineStyle','-.' , 'DisplayName','Fixed Optimal Energy')
 
 end
 
