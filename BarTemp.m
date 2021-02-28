@@ -34,7 +34,7 @@ legend( h, 'Ta vs. Months', 'Ambient Temperature' , 'Location', 'Best' , [237 19
 yyaxis right
 xlabel Months
 ylabel('Temperature(°C)')
-ylim([-20 35])
+ylim([-20 40])
 yyaxis left
 ylabel('Global Horizontal Radiation (KW-hr / m^2 / Day)')
 grid on
